@@ -98,6 +98,7 @@ public class AddFoodDialogFragment extends DialogFragment {
                 .build();
 
         BusProvider.getInstance().post(food);
+        Toast.makeText(getActivity(), "Add Completed!", Toast.LENGTH_SHORT).show();
         dismiss();
     }
 }
