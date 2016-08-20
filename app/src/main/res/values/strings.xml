@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BMR Calculator</string>
+    <string name="dialog_positive">ok</string>
+    <string name="dialog_negative">cancel</string>
+    <string-array name="sex">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+</resources>
