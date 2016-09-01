@@ -13,8 +13,7 @@ import java.util.List;
 public class BMRStorage {
 
     private static BMRStorage instance;
-    private Gson gson;
-    private SharedPreferences pref;
+    private Context context;
 
     public static BMRStorage getInstance(Context context) {
         if(instance == null) instance = new BMRStorage(context);
@@ -22,16 +21,15 @@ public class BMRStorage {
     }
 
     public BMRStorage(Context context){
-        gson = new Gson();
-        pref = context.getSharedPreferences("bmr", Context.MODE_PRIVATE);
+        this.context = context;
     }
 
     public void writeBMR(BMR bmr){
-        pref.edit().putString("json", gson.toJson(bmr)).apply();
+        getBMRPreferences().edit().putString("json", getGson().toJson(bmr)).apply();
     }
 
     public BMR readBMR(){
-        return gson.fromJson(pref.getString("json", null), BMR.class);
+        return getGson().fromJson(getBMRPreferences().getString("json", null), BMR.class);
     }
 
     public void writeNewFood(BMRFood food){
@@ -66,4 +64,12 @@ public class BMRStorage {
         return readBMR().getProfile();
     }
 
+
+    private Gson getGson(){
+        return new Gson();
+    }
+
+    private SharedPreferences getBMRPreferences(){
+        return context.getSharedPreferences("bmr", Context.MODE_PRIVATE);
+    }
 }

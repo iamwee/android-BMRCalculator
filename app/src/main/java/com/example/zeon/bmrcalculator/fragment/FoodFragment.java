@@ -71,6 +71,7 @@ public class FoodFragment extends Fragment {
     }
 
     public void onRestoreInstanceState(Bundle savedInstanceState) {
+
     }
 
     private void initInstances(View rootView) {
@@ -122,7 +123,6 @@ public class FoodFragment extends Fragment {
                 foodList.setVisibility(View.GONE);
                 foodEmptyList.setVisibility(View.VISIBLE);
             }
-
             return true;
         }
     };
